@@ -7,9 +7,6 @@ import { Route, Clock, House } from "lucide-react";
 const Location = () => {
   const [hasError, setHasError] = useState(false);
 
-  const iframeSrc =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.7173871602727!2d73.65914211072152!3d16.38835278427291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc03b2ea62dbfe7%3A0x618126f543d3ff69!2z4KSX4KWM4KSw4KWAIOCkruCkguCkl-CksiDgpJXgpL7gpLDgpY3gpK_gpL7gpLLgpK8!5e0!3m2!1mr!2min&hl=mr";
-
   return (
     <div className="flex flex-col items-center p-4 mt-24">
       <h1
@@ -91,13 +88,13 @@ const Location = () => {
             </div>
           ) : (
             <iframe
-              src={iframeSrc}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.7173868512764!2d73.6617224!3d16.3883528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc03b2ea62dbfe7%3A0x618126f543d3ff69!2sGauri%20Mangal%20Karyalay!5e0!3m2!1smr!2sin!4v1741031392599!5m2!1smr!2sin"
               width="100%"
               height="100%"
-              style={{ border: "0", borderRadius: "8px" }}
+              style={{ border: 0 }}
+              allowfullscreen=""
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              onError={() => setHasError(true)}
+              referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           )}
         </div>
