@@ -1,112 +1,163 @@
-"use client";
-import img1 from "@/assets/images/img1.jpg"; // Adjust the path if necessary
-import Header from "@/components/Header"; // Adjust the path if necessary
-import { useState } from "react";
+'use client'
+import { useState, useRef } from "react";
+import img1 from "@/assets/images/img1.jpg";
+import Header from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Noto_Sans_Devanagari } from "next/font/google";
+import { ChevronsLeft, ChevronsRight } from "lucide-react";
+import Couples from "@/widgets/Couples";
+import CountdownTimer from "@/widgets/CountDownTimer";
+import LoveGallery from "@/widgets/LoveGallery";
+import Events from "@/widgets/Events";
+import Footer from "@/widgets/Footer";
+import Location from "@/widgets/Location";
+
+const marathiFont = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  weight: ["400", "700"],
+});
 
 export default function WeddingInvitation() {
   const [rsvp, setRsvp] = useState(false);
+  const couplesRef = useRef(null);
+  const countdownRef = useRef(null);
+  const galleryRef = useRef(null);
+  const eventsRef = useRef(null);
+  const locationRef = useRef(null);
+  const heroRef = useRef(null);
+
+  const scrollToSection = (section) => {
+    switch (section) {
+      case "Couples":
+        couplesRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "Countdown":
+        countdownRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "Gallery":
+        galleryRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "Events":
+        eventsRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "Location":
+        locationRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      default:heroRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+    }
+  };
 
   return (
-    <div className="min-h-screen max-w-screen w-full bg-[#f8f1e4] text-[#5c3d2e] font-['Tiro Devanagari Marathi'] relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#f9f6f0] cursor-pointer text-[#5c3d2e] relative overflow-hidden" ref={heroRef}>
       {/* Hero Section */}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-screen overflow-hidden flex flex-col">
         {/* Background Image */}
         <Image
           src={img1}
           alt="Wedding Image"
-          layout="fill"
-          objectFit="cover"
+          fill
           priority
-          className="absolute top-0 left-0 w-full h-full"
+          className="absolute top-0 left-0 w-full h-full object-cover"
         />
         {/* Dark Overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
 
         {/* Header Over Image */}
         <div className="absolute top-0 left-0 w-full z-50">
-          <Header />
+          <Header scrollToSection={scrollToSection} />
         </div>
 
         {/* Wedding Text */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20">
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-lg font-medium tracking-widest uppercase pb-3 opacity-35"
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hover:opacity-90 transition-all ease-in-out duration-700 opacity-40 text-center text-white z-20 px-4 md:px-0">
+          <div
+            className={`${marathiFont.className} text-sm mt-20 md:mt-44 sm:text-base`}
           >
-            आम्ही विवाह करत आहोत
-          </motion.p>
-
+            <motion.p
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-gray-300 font-medium uppercase pb-3 opacity-35"
+            >
+              सागराच्या लाटांवर प्रेमाची गाणी,
+              <br />
+              रंजनासोबत सुरवात करतोय आयुष्याची नवी कहाणी!
+            </motion.p>
+          </div>
           <motion.h1
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2 }}
-            className="text-6xl font-[Dancing Script] font-bold mt-2"
+            style={{ fontFamily: "AMS-Vasudeva" }}
+            className="text-4xl sm:text-3xl md:text-5xl text-red-600 font-medium mt-2 md:mt-6 leading-[1.2]"
           >
-            सागर <span className="text-[#FFD700]">&</span> रंजना
+            SauBaivavaah
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2 }}
+            style={{ fontFamily: "AMS-Vasudeva" }}
+            className="text-7xl sm:text-6xl md:text-8xl font-medium mt-4 leading-[1.2]"
+          >
+            saagar <span className="text-[#FFD700]">AaaiNa</span> r/janaa
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-lg mt-5"
-          >
-            लोके मंगल कार्यालय, शिरगाव, देवगड, महाराष्ट्र 
-             
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-lg mt-5"
-          >
-            २० मे २०२५ 
-             
-          </motion.p>
-       
+          <div className={`${marathiFont.className} text-sm sm:text-lg`}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="mt-3 md:mt-5"
+            >
+              लोके मंगल कार्यालय, शिरगाव, देवगड, महाराष्ट्र
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="mt-1 md:mt-2 flex items-center justify-center"
+            >
+              <ChevronsLeft className="text-md" />{" "}
+              <span className="text-base">२० मे २०२५</span>
+              <ChevronsRight className="text-md" />
+            </motion.p>
+          </div>
+          <div className="flex flex-col items-center mt-10">
+            {/* Scroll Down Text */}
+
+            {/* Animated Mouse Icon */}
+            <div className="relative w-6 h-10 border border-gray-200 rounded-full flex justify-center items-center">
+              <motion.div
+                className="w-2 h-2 bg-gray-100 rounded-full"
+                animate={{ y: [0, 10, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Countdown Timer */}
-      <div className="text-center py-10">
-        <h3 className="text-3xl">विवाह सोहळ्यासाठी उलट गणना</h3>
-        {/* <Countdown date={new Date("2025-05-20T00:00:00")} /> */}
+      <div ref={couplesRef}>
+        <Couples />
       </div>
-
-      {/* Event Details */}
-      <div className="text-center py-10">
-        <h3 className="text-3xl">कार्यक्रम वेळापत्रक</h3>
-        <ul className="mt-4">
-          <li>💐 हळदी समारंभ - १८ मे २०२५</li>
-          <li>🎊 संगीत रात्री - १९ मे २०२५</li>
-          <li>💍 लग्न समारंभ - २० मे २०२५</li>
-        </ul>
+      <div ref={countdownRef}>
+        <CountdownTimer />
       </div>
-
-      {/* RSVP Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        className="block mx-auto mt-10 px-6 py-2 bg-[#5c3d2e] text-white rounded-lg"
-        onClick={() => setRsvp(true)}
-      >
-        उपस्थिती नोंदवा
-      </motion.button>
-
-      {/* RSVP Confirmation */}
-      {rsvp && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mt-5 text-lg"
-        >
-          आपल्या उपस्थितीची नोंद केली गेली! विवाह सोहळ्यात भेटूया.
-        </motion.div>
-      )}
+      <div ref={galleryRef}>
+        <LoveGallery />
+      </div>
+      <div ref={eventsRef}>
+        <Events />
+      </div>
+      <div ref={locationRef}>
+        <Location />
+      </div>
+      <Footer />
     </div>
   );
 }
