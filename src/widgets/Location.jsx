@@ -22,7 +22,7 @@ const Location = () => {
         {/* Left Side: Address */}
         <div className="w-full lg:w-[40%] p-5">
           <h2 className="text-lg font-bold mt-5 lg:mt-16 mb-2 flex justify-center lg:justify-start lg:ml-6 items-center gap-2">
-            ठिकाणाचा पत्ता
+            विवाह स्थळाचे ठिकाण
           </h2>
           <p className="lg:ml-6 text-base">
             गौरी मंगल कार्यालय, असलदे,

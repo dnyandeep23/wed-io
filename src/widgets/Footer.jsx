@@ -38,7 +38,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-gradient-to-br from-amber-200/70 via-amber-400/80 to-amber-600/90 text-white pt-44 pb-8 px-4 md:px-6"
+      className="bg-gradient-to-br from-amber-200/70 via-amber-400/80 to-amber-600/90 text-white pt-52 md:pt-44 pb-8 px-4 md:px-6"
       style={{
         clipPath: "ellipse(100% 90% at 50% 100%)",
       }}
