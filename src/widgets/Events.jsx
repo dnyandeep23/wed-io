@@ -129,11 +129,11 @@ export default function Events() {
                 <h3 className="text-lg font-bold text-gray-800">
                   {event.name}
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-base text-gray-700">
                   {event.date} | {event.time}
                 </p>
                 {event.points?.length > 0 && (
-                  <ul className="text-xs text-gray-600 mt-1">
+                  <ul className="text-sm text-gray-600 mt-1">
                     {event.points.map((point, index) => (
                       <li
                         key={index}

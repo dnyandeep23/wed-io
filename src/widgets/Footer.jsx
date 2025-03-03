@@ -37,14 +37,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-amber-200/70 via-amber-400/80 to-amber-600/90 text-white py-8 px-4 md:px-6">
+    <footer
+      className="bg-gradient-to-br from-amber-200/70 via-amber-400/80 to-amber-600/90 text-white pt-44 pb-8 px-4 md:px-6"
+      style={{
+        clipPath: "ellipse(100% 90% at 50% 100%)",
+      }}
+    >
       <div className="container mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
         {/* Left QR Code */}
         <div className="hidden md:flex w-1/4 justify-center">
           <div className="bg-white p-4 w-56 rounded-xl shadow-lg">
             <Image src={gpay} alt="QR Code" className="w-full h-auto" />
             <p className="text-gray-900 text-sm text-center mt-2 font-medium">
-              आपल्या गोड शुभेच्छांचा इथे स्वीकार केल्या जातील 😊😂😂
+              आपल्या गोड शुभेच्छांचा इथे स्वीकार केल्या जातील 😂😂😂
             </p>
           </div>
         </div>
@@ -82,7 +87,7 @@ export default function Footer() {
                 <Image src={img} alt="QR Code" className="w-full h-auto" />
                 <p className="text-gray-900 text-sm mt-2 text-center font-medium">
                   {idx === 0
-                    ? "आपल्या गोड शुभेच्छांचा इथे स्वीकार केल्या जातील 😊😂😂"
+                    ? "आपल्या गोड शुभेच्छांचा इथे स्वीकार केल्या जातील 😂😂😂"
                     : "विवाह पत्रिकेसाठी QR स्कॅन करा"}
                 </p>
               </div>

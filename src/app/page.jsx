@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef } from "react";
+import { useState,useEffect, useRef } from "react";
 import img1 from "@/assets/images/img1.jpg";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
@@ -26,7 +26,40 @@ export default function WeddingInvitation() {
   const eventsRef = useRef(null);
   const locationRef = useRef(null);
   const heroRef = useRef(null);
+  // const [showWarning, setShowWarning] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
 
+  // useEffect(() => {
+  //   const audio = document.getElementById("background-audio");
+
+  //   const handleUserInteraction = () => {
+  //     if (!isPlaying) {
+  //       audio.play().catch((err) => console.log("Autoplay blocked:", err));
+  //       setIsPlaying(true);
+  //     }
+  //   };
+
+  //   document.addEventListener("click", handleUserInteraction, { once: true });
+
+  //   return () => {
+  //     document.removeEventListener("click", handleUserInteraction);
+  //   };
+  // }, [isPlaying]);
+
+  // useEffect(() => {
+  //   const handleScreenshot = () => {
+  //     setShowWarning(true);
+  //     setTimeout(() => setShowWarning(false), 3000); // Hide modal after 3 seconds
+  //   };
+
+  //   document.addEventListener("visibilitychange", () => {
+  //     if (document.hidden) handleScreenshot();
+  //   });
+
+  //   return () => {
+  //     document.removeEventListener("visibilitychange", handleScreenshot);
+  //   };
+  // }, []);
   const scrollToSection = (section) => {
     switch (section) {
       case "Couples":
@@ -50,7 +83,33 @@ export default function WeddingInvitation() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#f9f6f0] cursor-pointer text-[#5c3d2e] relative overflow-hidden" ref={heroRef}>
+    <div
+      className="min-h-screen w-full bg-[#f9f6f0] cursor-pointer text-[#5c3d2e] relative overflow-hidden"
+      ref={heroRef}
+      // style={{ pointerEvents: "none" }}
+    >
+      {/* Screenshot Warning Modal */}
+      {/* <audio
+        id="background-audio"
+        src="/path-to-your-song.mp3"
+        preload="auto"
+      ></audio> */}
+      {showWarning && (
+        <div className="fixed top-0 left-0 w-full h-full bg-red-900/80 flex items-center justify-center z-[100]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-red-500/30 p-6 rounded-lg text-center shadow-xl"
+          >
+            <p
+              className={`${marathiFont.className} text-2xl text-red-900 font-bold`}
+            >
+              स्क्रीनशॉट घेणे परवानगी नाही!
+            </p>
+          </motion.div>
+        </div>
+      )}
       {/* Hero Section */}
       <div className="relative w-full h-screen overflow-hidden flex flex-col">
         {/* Background Image */}
@@ -104,7 +163,7 @@ export default function WeddingInvitation() {
             saagar <span className="text-[#FFD700]">AaaiNa</span> r/janaa
           </motion.h1>
 
-          <div className={`${marathiFont.className} text-sm sm:text-lg`}>
+          <div className={`${marathiFont.className} text-sm sm:text-xl`}>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,9 +178,9 @@ export default function WeddingInvitation() {
               transition={{ duration: 1 }}
               className="mt-1 md:mt-2 flex items-center justify-center"
             >
-              <ChevronsLeft className="text-md" />{" "}
-              <span className="text-base">२० मे २०२५</span>
-              <ChevronsRight className="text-md" />
+              <ChevronsLeft className="text-2xl" />{" "}
+              <span className="text-xl">२० मे २०२५</span>
+              <ChevronsRight className="text-2xl" />
             </motion.p>
           </div>
           <div className="flex flex-col items-center mt-10">

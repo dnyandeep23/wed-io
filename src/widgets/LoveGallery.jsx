@@ -85,6 +85,12 @@ export default function ImageGallery() {
     setCurrentIndex(index);
     setOpen(true);
   };
+  
+    useEffect(() => {
+      if (scrollContainerRef.current) {
+        setContainerWidth(scrollContainerRef.current.scrollWidth);
+      }
+    }, [imageLinks]);
 
   const scrollGallery = (direction) => {
     if (scrollContainerRef.current) {
