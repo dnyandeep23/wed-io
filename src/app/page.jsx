@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef } from "react";
-import img1 from "@/assets/images/img1.jpg";
+import img1 from "@/assets/images/img1.JPG";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
