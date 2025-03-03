@@ -26,7 +26,7 @@ export default function WeddingInvitation() {
   const eventsRef = useRef(null);
   const locationRef = useRef(null);
   const heroRef = useRef(null);
-  // const [showWarning, setShowWarning] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   // const [isPlaying, setIsPlaying] = useState(false);
 
   // useEffect(() => {
