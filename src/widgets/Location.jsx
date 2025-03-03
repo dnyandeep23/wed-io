@@ -8,7 +8,7 @@ const Location = () => {
   const [hasError, setHasError] = useState(false);
 
   const iframeSrc =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.7173871602727!2d73.65914211072152!3d16.38835278427291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc03b2ea62dbfe7%3A0x618126f543d3ff69!2z4KSX4KWM4KSw4KWAIOCkruCkguCkl-CksiDgpJXgpL7gpLDgpY3gpK_gpL7gpLLgpK8!5e0!3m2!1shi!2sin!4v1740923644780!5m2!1shi!2sin";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.7173871602727!2d73.65914211072152!3d16.38835278427291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc03b2ea62dbfe7%3A0x618126f543d3ff69!2z4KSX4KWM4KSw4KWAIOCkruCkguCkl-CksiDgpJXgpL7gpLDgpY3gpK_gpL7gpLLgpK8!5e0!3m2!1mr!2min&hl=mr";
 
   return (
     <div className="flex flex-col items-center p-4 mt-24">
@@ -18,13 +18,13 @@ const Location = () => {
       >
         ivavaah saaehLyaacae iOkaNa
       </h1>
-      <div className="flex flex-col lg:flex-row justify-center items-start p-5 w-full max-w-5xl mb-12 h-auto bg-white rounded-lg shadow-lg mt-10">
+      <div className="flex flex-col lg:flex-row justify-center items-start text-center  lg:text-start p-5 w-full max-w-5xl mb-12 h-auto bg-white rounded-lg shadow-lg mt-10">
         {/* Left Side: Address */}
         <div className="w-full lg:w-[40%] p-5">
-          <h2 className="text-lg font-bold mt-5 lg:mt-16 mb-2 flex items-center gap-2">
-            <House /> ठिकाणाचा पत्ता
+          <h2 className="text-lg font-bold mt-5 lg:mt-16 mb-2 flex justify-center lg:justify-start lg:ml-6 items-center gap-2">
+            ठिकाणाचा पत्ता
           </h2>
-          <p className="text-base">
+          <p className="lg:ml-6 text-base">
             गौरी मंगल कार्यालय, असलदे,
             <br /> नांदगाव, कणकवली,
             <br /> महाराष्ट्र - ४१६६०२

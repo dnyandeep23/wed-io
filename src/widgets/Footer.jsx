@@ -75,7 +75,7 @@ export default function Footer() {
               <Phone size={20} /> +91 9167581568
             </p>
             <p className="flex items-start gap-2 text-gray-700 text-sm font-medium text-center">
-              <MapPin size={20} /> सावडावं डगरेवाडी, ता कणकवली, जि सिंधुदुर्ग,
+              <MapPin size={20} /> सावडाव डगरेवाडी, ता. कणकवली, जि. सिंधुदुर्ग,
               महाराष्ट्र - ४१६६०२
             </p>
           </div>

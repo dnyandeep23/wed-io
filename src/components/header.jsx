@@ -94,7 +94,10 @@ export default function Header({ scrollToSection }) {
                   className="flex flex-col mt-6 items-center cursor-pointer relative"
                   onMouseEnter={() => setHovered(name)}
                   onMouseLeave={() => setHovered(null)}
-                  onClick={() => scrollToSection(section)}
+                  onClick={() => {
+                    scrollToSection(section);
+                    setMenuOpen(!menuOpen);
+                  }}
                 >
                   <div className="flex flex-row gap-2 items-center pb-0.5">
                     <Icon size={20} />

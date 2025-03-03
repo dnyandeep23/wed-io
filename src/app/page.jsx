@@ -170,7 +170,7 @@ export default function WeddingInvitation() {
               transition={{ duration: 1 }}
               className="mt-3 md:mt-5"
             >
-              लोके मंगल कार्यालय, शिरगाव, देवगड, महाराष्ट्र
+              गौरी मंगल कार्यालय, असलदे, नांदगाव, कणकवली, महाराष्ट्र
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
