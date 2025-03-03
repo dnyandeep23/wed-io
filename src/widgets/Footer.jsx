@@ -130,7 +130,7 @@ export default function Footer() {
       {/* Copyright Section */}
       <div className="text-center mt-6">
         <p className="text-gray-900 text-sm">
-          © 2024 सर्व हक्क राखीव | प्रेमाने आमंत्रण ❤️
+          © २०२५ सर्व हक्क राखीव | प्रेमाने आमंत्रण ❤️
         </p>
         <p className="text-sm text-gray-600 mt-2">
           Developed with ❤️ | Developed By Dnyandeep
