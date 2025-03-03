@@ -1,5 +1,5 @@
 'use client'
-import { useState,useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import img1 from "@/assets/images/img1.jpg";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
