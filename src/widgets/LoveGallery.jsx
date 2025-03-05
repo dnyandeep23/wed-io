@@ -3,19 +3,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-// import Lightbox from "yet-another-react-lightbox";
-// import Zoom from "yet-another-react-lightbox/plugins/zoom";
-// import "yet-another-react-lightbox/styles.css";
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+
 // Convert Google Drive file ID to direct link
 
 export default function ImageGallery() {
   const zoomRef = useRef(null);
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -160,20 +158,54 @@ export default function ImageGallery() {
       </div>
 
       {/* Lightbox */}
-      {open && (
-        <Lightbox
-          mainSrc={imageLinks[index]}
-          nextSrc={imageLinks[(index + 1) % imageLinks.length]}
-          prevSrc={
-            imageLinks[(index + imageLinks.length - 1) % imageLinks.length]
-          }
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setIndex((index + imageLinks.length - 1) % imageLinks.length)
-          }
-          onMoveNextRequest={() => setIndex((index + 1) % imageLinks.length)}
-        />
-      )}
+      <Lightbox
+      open={open}
+      close={() => setOpen(false)}
+      index={currentIndex}
+      slides={imageLinks.map((src) => ({ src }))}
+      controller={{
+        closeOnPullDown: true,
+        closeOnBackdropClick: true,
+      }}
+      plugins={[Zoom]}
+      zoom={{
+        ref: zoomRef, // ✅ Assign ref to zoom plugin
+        maxZoomPixelRatio: 3,
+        scrollToZoom: true,
+        doubleTapDelay: 300,
+        pinchZoomDistanceFactor: 2,
+      }}
+      render={{
+        slide: ({ slide }) => (
+          <div className="w-full h-full flex items-center justify-center">
+            <Image
+              src={slide.src}
+              alt="Gallery Image"
+              width={800}
+              height={600}
+              className="w-auto h-auto max-w-full max-h-full"
+              priority
+            />
+          </div>
+        ),
+        toolbar: () => (
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-700 p-2 rounded flex space-x-2">
+            <button
+              onClick={() => zoomRef.current?.zoomIn()} // ✅ Fixed function call
+              className="bg-white p-2 rounded"
+            >
+              🔍+
+            </button>
+            <button
+              onClick={() => zoomRef.current?.zoomOut()} // ✅ Fixed function call
+              className="bg-white p-2 rounded"
+            >
+              🔍-
+            </button>
+          </div>
+        ),
+      }}
+    />
     </div>
   );
 }
