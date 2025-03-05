@@ -159,53 +159,53 @@ export default function ImageGallery() {
 
       {/* Lightbox */}
       <Lightbox
-      open={open}
-      close={() => setOpen(false)}
-      index={currentIndex}
-      slides={imageLinks.map((src) => ({ src }))}
-      controller={{
-        closeOnPullDown: true,
-        closeOnBackdropClick: true,
-      }}
-      plugins={[Zoom]}
-      zoom={{
-        ref: zoomRef, // ✅ Assign ref to zoom plugin
-        maxZoomPixelRatio: 3,
-        scrollToZoom: true,
-        doubleTapDelay: 300,
-        pinchZoomDistanceFactor: 2,
-      }}
-      render={{
-        slide: ({ slide }) => (
-          <div className="w-full h-full flex items-center justify-center">
-            <Image
-              src={slide.src}
-              alt="Gallery Image"
-              width={800}
-              height={600}
-              className="w-auto h-auto max-w-full max-h-full"
-              priority
-            />
-          </div>
-        ),
-        toolbar: () => (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-700 p-2 rounded flex space-x-2">
-            <button
-              onClick={() => zoomRef.current?.zoomIn()} // ✅ Fixed function call
-              className="bg-white p-2 rounded"
-            >
-              🔍+
-            </button>
-            <button
-              onClick={() => zoomRef.current?.zoomOut()} // ✅ Fixed function call
-              className="bg-white p-2 rounded"
-            >
-              🔍-
-            </button>
-          </div>
-        ),
-      }}
-    />
+        open={open}
+        close={() => setOpen(false)}
+        index={currentIndex}
+        slides={imageLinks.map((src) => ({ src }))}
+        controller={{
+          closeOnPullDown: true,
+          closeOnBackdropClick: true,
+        }}
+        plugins={[Zoom]}
+        zoom={{
+          ref: zoomRef, // ✅ Assign ref to zoom plugin
+          maxZoomPixelRatio: 3,
+          scrollToZoom: true,
+          doubleTapDelay: 300,
+          pinchZoomDistanceFactor: 2,
+        }}
+        render={{
+          slide: ({ slide }) => (
+            <div className="w-full h-full flex items-center justify-center">
+              <Image
+                src={slide.src}
+                alt="Gallery Image"
+                width={800}
+                height={600}
+                className="w-auto h-auto max-w-full max-h-full"
+                priority
+              />
+            </div>
+          ),
+          toolbar: () => (
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-700 p-2 rounded flex space-x-2">
+              <button
+                onClick={() => zoomRef.current?.zoomIn()} // ✅ Fixed function call
+                className="bg-white p-2 rounded"
+              >
+                🔍+
+              </button>
+              <button
+                onClick={() => zoomRef.current?.zoomOut()} // ✅ Fixed function call
+                className="bg-white p-2 rounded"
+              >
+                🔍-
+              </button>
+            </div>
+          ),
+        }}
+      />
     </div>
   );
 }
