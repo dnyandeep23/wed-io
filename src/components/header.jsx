@@ -30,7 +30,17 @@ export default function Header({ scrollToSection }) {
     >
       <div className="flex justify-between items-center py-2 px-4 max-w-5xl mx-auto">
         {/* Logo */}
-        <Image src={logo} alt="Logo" width={80} height={80} priority />
+        <Image
+          src={logo}
+          alt="Logo"
+          width={80}
+          height={80}
+          priority
+          onClick={() => {
+            scrollToSection("Hero");
+            setMenuOpen(false);
+          }}
+        />
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
@@ -96,7 +106,7 @@ export default function Header({ scrollToSection }) {
                   onMouseLeave={() => setHovered(null)}
                   onClick={() => {
                     scrollToSection(section);
-                    setMenuOpen(!menuOpen);
+                    setMenuOpen(false);
                   }}
                 >
                   <div className="flex flex-row gap-2 items-center pb-0.5">

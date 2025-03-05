@@ -6,6 +6,11 @@ import wed_invite from "@/assets/images/wed_invite.svg";
 
 export default function Footer() {
   const [url, setUrl] = useState("");
+  const handleRedirect = () => {
+    // Replace with the desired latitude & longitude or address
+    window.location.href =
+      "https://www.google.com/maps?q=16.333252312593324,73.69173144882154";
+  };
 
   useEffect(() => {
     const fetchUrl = async () => {
@@ -75,8 +80,8 @@ export default function Footer() {
               <Phone size={20} /> +91 9167581568
             </p>
             <p className="flex items-start gap-2 text-gray-700 text-sm font-medium text-center">
-              <MapPin size={20} /> सावडाव डगरेवाडी, ता. कणकवली, जि. सिंधुदुर्ग,
-              महाराष्ट्र - ४१६६०२
+              <MapPin size={20} onClick={handleRedirect} /> सावडाव डगरेवाडी, ता.
+              कणकवली, जि. सिंधुदुर्ग, महाराष्ट्र - ४१६६०२
             </p>
           </div>
 

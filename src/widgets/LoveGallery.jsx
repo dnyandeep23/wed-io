@@ -3,15 +3,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+// import Lightbox from "yet-another-react-lightbox";
+// import Zoom from "yet-another-react-lightbox/plugins/zoom";
+// import "yet-another-react-lightbox/styles.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 // Convert Google Drive file ID to direct link
 
-
 export default function ImageGallery() {
+  const zoomRef = useRef(null);
+  const ref = useRef(null);
   const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -39,7 +43,6 @@ export default function ImageGallery() {
 
   // Function to extract image ID for Google Drive
 
-
   // Function to get direct Google Drive link
   const getDirectGoogleDriveLink = (id) => {
     return `https://drive.google.com/uc?export=view&id=${id}`;
@@ -54,16 +57,18 @@ export default function ImageGallery() {
 
         if (!Array.isArray(gallery)) throw new Error("Gallery is not an array");
 
-        const newImageUrls = gallery.map((url) => {
-          if (url.includes("drive.google.com")) {
-            const fileId = extractFileId(url);
-            return fileId ? getDirectGoogleDriveLink(fileId) : null;
-          } else if (url.includes("upcdn.io")) {
-            return url; // Directly use UpCDN links
-          } else {
-            return url; // Allow other domains
-          }
-        }).filter(Boolean);
+        const newImageUrls = gallery
+          .map((url) => {
+            if (url.includes("drive.google.com")) {
+              const fileId = extractFileId(url);
+              return fileId ? getDirectGoogleDriveLink(fileId) : null;
+            } else if (url.includes("upcdn.io")) {
+              return url; // Directly use UpCDN links
+            } else {
+              return url; // Allow other domains
+            }
+          })
+          .filter(Boolean);
 
         setImages((prevImages) => {
           const uniqueImages = new Set([...prevImages, ...newImageUrls]);
@@ -85,12 +90,12 @@ export default function ImageGallery() {
     setCurrentIndex(index);
     setOpen(true);
   };
-  
-    useEffect(() => {
-      if (scrollContainerRef.current) {
-        setContainerWidth(scrollContainerRef.current.scrollWidth);
-      }
-    }, [imageLinks]);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      setContainerWidth(scrollContainerRef.current.scrollWidth);
+    }
+  }, [imageLinks]);
 
   const scrollGallery = (direction) => {
     if (scrollContainerRef.current) {
@@ -155,28 +160,20 @@ export default function ImageGallery() {
       </div>
 
       {/* Lightbox */}
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={imageLinks.map((src) => ({
-          src: src,
-        }))}
-        index={currentIndex}
-        render={{
-          slide: ({ slide }) => (
-            <div className="w-full h-full flex items-center justify-center">
-              <Image
-                src={slide.src}
-                alt="Gallery Image"
-                width={800}
-                height={600}
-                className="w-auto h-auto max-w-full max-h-full"
-                priority
-              />
-            </div>
-          ),
-        }}
-      />
+      {open && (
+        <Lightbox
+          mainSrc={imageLinks[index]}
+          nextSrc={imageLinks[(index + 1) % imageLinks.length]}
+          prevSrc={
+            imageLinks[(index + imageLinks.length - 1) % imageLinks.length]
+          }
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() =>
+            setIndex((index + imageLinks.length - 1) % imageLinks.length)
+          }
+          onMoveNextRequest={() => setIndex((index + 1) % imageLinks.length)}
+        />
+      )}
     </div>
   );
 }
