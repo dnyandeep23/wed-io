@@ -137,9 +137,9 @@ export default function Footer() {
         <p className="text-gray-900 text-sm">
           © २०२५ सर्व हक्क राखीव | प्रेमाने आमंत्रण ❤️
         </p>
-        <p className="text-sm text-gray-600 mt-2">
-          Developed with ❤️ | Developed By Dnyandeep
-        </p>
+        {/* <p className="text-sm text-gray-600 mt-2">
+         Design & Developed by Hell's Member
+        </p> */}
       </div>
     </footer>
   );

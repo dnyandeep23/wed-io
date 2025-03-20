@@ -12,6 +12,7 @@ import LoveGallery from "@/widgets/LoveGallery";
 import Events from "@/widgets/Events";
 import Footer from "@/widgets/Footer";
 import Location from "@/widgets/Location";
+import { redirect } from "next/navigation";
 
 const marathiFont = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
@@ -27,6 +28,8 @@ export default function WeddingInvitation() {
   const locationRef = useRef(null);
   const heroRef = useRef(null);
   const [showWarning, setShowWarning] = useState(false);
+
+  // redirect("/maintenance");
   // const [isPlaying, setIsPlaying] = useState(false);
 
   // useEffect(() => {
@@ -60,6 +63,9 @@ export default function WeddingInvitation() {
   //     document.removeEventListener("visibilitychange", handleScreenshot);
   //   };
   // }, []);
+
+  
+
   const scrollToSection = (section) => {
     switch (section) {
       case "Couples":
