@@ -102,11 +102,11 @@ export default function Footer() {
           {/* Download Invitation Button */}
           <div className="mt-6">
             <a
-              href={url}
+              href={"https://online.fliphtml5.com/dewef/jjsn/#p=1"}
               download
               className="bg-white text-amber-700 font-bold py-2 px-6 w-full max-w-xs mx-auto rounded-full flex items-center gap-2 justify-center text-base hover:bg-amber-100 transition duration-300 shadow-lg"
             >
-              <Download size={20} /> विवाह पत्रिका डाउनलोड करा
+              <Download size={20} /> विवाह पत्रिका पहा
             </a>
           </div>
 
