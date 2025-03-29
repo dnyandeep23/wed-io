@@ -12,7 +12,7 @@ import LoveGallery from "@/widgets/LoveGallery";
 import Events from "@/widgets/Events";
 import Footer from "@/widgets/Footer";
 import Location from "@/widgets/Location";
-import { redirect } from "next/navigation";
+import Modal from "@/components/Modal";
 
 const marathiFont = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
@@ -100,6 +100,15 @@ export default function WeddingInvitation() {
         src="/path-to-your-song.mp3"
         preload="auto"
       ></audio> */}
+
+      <Modal className="z-50" isOpen={rsvp} onClose={() => setRsvp(false)}>
+        <iframe
+          src="https://online.fliphtml5.com/dewef/jjsn/#p=1"
+          className="w-full h-full rounded-lg"
+          allowFullScreen
+        ></iframe>
+      </Modal>
+
       {showWarning && (
         <div className="fixed top-0 left-0 w-full h-full bg-red-900/80 flex items-center justify-center z-[100]">
           <motion.div
@@ -130,7 +139,7 @@ export default function WeddingInvitation() {
         <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
 
         {/* Header Over Image */}
-        <div className="absolute top-0 left-0 w-full z-50">
+        <div className="absolute top-0 left-0 w-full z-40">
           <Header scrollToSection={scrollToSection} />
         </div>
 
@@ -222,7 +231,7 @@ export default function WeddingInvitation() {
       <div ref={locationRef}>
         <Location />
       </div>
-      <Footer />
+      <Footer setRsvp={setRsvp} />
     </div>
   );
 }

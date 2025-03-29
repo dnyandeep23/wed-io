@@ -4,7 +4,7 @@ import Image from "next/image";
 import gpay from "@/assets/images/gpay.svg";
 import wed_invite from "@/assets/images/wed_invite.svg";
 
-export default function Footer() {
+export default function Footer({ setRsvp }) {
   const [url, setUrl] = useState("");
   const handleRedirect = () => {
     // Replace with the desired latitude & longitude or address
@@ -101,13 +101,12 @@ export default function Footer() {
 
           {/* Download Invitation Button */}
           <div className="mt-6">
-            <a
-              href={"https://online.fliphtml5.com/dewef/jjsn/#p=1"}
-              download
+            <div
+              onClick={() => setRsvp(true)}
               className="bg-white text-amber-700 font-bold py-2 px-6 w-full max-w-xs mx-auto rounded-full flex items-center gap-2 justify-center text-base hover:bg-amber-100 transition duration-300 shadow-lg"
             >
-              <Download size={20} /> विवाह पत्रिका पहा
-            </a>
+              विवाह पत्रिका पहा
+            </div>
           </div>
 
           {/* Social Media Links */}
