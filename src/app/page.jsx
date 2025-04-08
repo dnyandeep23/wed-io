@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef } from "react";
 import img1 from "@/assets/images/img1.JPG";
-import img2 from "@/assets/images/img2.JPG";
+import img2 from "@/assets/images/img2.jpg";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
