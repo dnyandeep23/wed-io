@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef } from "react";
 import img1 from "@/assets/images/img1.JPG";
+import img2 from "@/assets/images/img2.JPG";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -13,6 +14,7 @@ import Events from "@/widgets/Events";
 import Footer from "@/widgets/Footer";
 import Location from "@/widgets/Location";
 import Modal from "@/components/Modal";
+import CustomCarousel from "@/components/carousel";
 
 const marathiFont = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
@@ -128,13 +130,16 @@ export default function WeddingInvitation() {
       {/* Hero Section */}
       <div className="relative w-full h-screen overflow-hidden flex flex-col">
         {/* Background Image */}
-        <Image
+        <div className="absolute top-0 left-0 w-full h-full">
+          <CustomCarousel images={[img1,img2]}  />
+        </div>
+        {/* <Image
           src={img1}
           alt="Wedding Image"
           fill
           priority
           className="absolute top-0 left-0 w-full h-full object-cover"
-        />
+        /> */}
         {/* Dark Overlay */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
 
