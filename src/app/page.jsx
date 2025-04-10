@@ -131,7 +131,7 @@ export default function WeddingInvitation() {
       <div className="relative w-full h-screen overflow-hidden flex flex-col">
         {/* Background Image */}
         <div className="absolute top-0 left-0 w-full h-full">
-          <CustomCarousel images={[img1,img2]}  />
+          <CustomCarousel images={[img1, img2]} />
         </div>
         {/* <Image
           src={img1}
@@ -161,7 +161,7 @@ export default function WeddingInvitation() {
             >
               सागराच्या लाटांवर प्रेमाची गाणी,
               <br />
-              रंजनासोबत सुरवात करतोय आयुष्याची नवी कहाणी!
+              रंजनासोबत सुरुवात करतोय आयुष्याची नवी कहाणी!
             </motion.p>
           </div>
           <motion.h1
